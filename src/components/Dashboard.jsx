@@ -6,7 +6,7 @@ export default function Dashboard() {
   const [currentAudio, setCurrentAudio] = useState(null);
 
   useEffect(() => {
-    API.get("/songs").then(res => setSongs(res.data));
+    API.get("/api/songs").then(res => setSongs(res.data));
   }, []);
 
   const playPause = (url) => {

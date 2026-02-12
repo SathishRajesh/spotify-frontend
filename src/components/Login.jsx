@@ -9,7 +9,7 @@ export default function Login({ setUser }) {
 
   const handleLogin = async () => {
     try {
-      const res = await API.post("/auth/login", { email, password });
+      const res = await API.post("/api/auth/login", { email, password });
       setUser(res.data); 
       localStorage.setItem("user", JSON.stringify(res.data));
       navigate("/dashboard");

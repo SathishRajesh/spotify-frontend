@@ -7,10 +7,9 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
   const handleRegister = async () => {
     try {
-      await API.post("/auth/register", { username, email, password });
+      await API.post("/api/auth/register", { username, email, password });
       alert("Registered successfully! Please login.");
       navigate("/");
     } catch (err) {
