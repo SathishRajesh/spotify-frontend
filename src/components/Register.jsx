@@ -7,23 +7,53 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   const handleRegister = async () => {
     try {
       await API.post("/api/auth/register", { username, email, password });
+
       alert("Registered successfully! Please login.");
       navigate("/");
     } catch (err) {
-      alert(err.response.data.error);
+      alert(err.response?.data?.error || "Register failed");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h2 className="text-2xl mb-4">Register</h2>
-      <input placeholder="Username" className="mb-2 p-2 border rounded" value={username} onChange={(e)=>setUsername(e.target.value)} />
-      <input placeholder="Email" className="mb-2 p-2 border rounded" value={email} onChange={(e)=>setEmail(e.target.value)} />
-      <input placeholder="Password" type="password" className="mb-2 p-2 border rounded" value={password} onChange={(e)=>setPassword(e.target.value)} />
-      <button onClick={handleRegister} className="bg-green-500 p-2 text-white rounded">Register</button>
+    <div className="authPage">
+      <div className="authCard">
+        <h2 className="authTitle">Create Account</h2>
+
+        <input
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="primaryBtn" onClick={handleRegister}>
+          Register
+        </button>
+
+        <button
+          className="secondaryBtn"
+          onClick={() => navigate("/")}
+        >
+          Back to Login
+        </button>
+      </div>
     </div>
   );
 }

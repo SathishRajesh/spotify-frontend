@@ -10,43 +10,45 @@ export default function Login({ setUser }) {
   const handleLogin = async () => {
     try {
       const res = await API.post("/api/auth/login", { email, password });
-      setUser(res.data); 
+
+      setUser(res.data);
       localStorage.setItem("user", JSON.stringify(res.data));
+
       navigate("/dashboard");
     } catch (err) {
-      alert(err.response.data.error);
+      alert(err.response?.data?.error || "Login failed");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h2 className="text-2xl mb-4">Login</h2>
-      <input
-        placeholder="Email"
-        className="mb-2 p-2 border rounded w-64"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        placeholder="Password"
-        type="password"
-        className="mb-2 p-2 border rounded w-64"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={handleLogin}
-        className="bg-green-500 p-2 text-white rounded w-64 mb-2"
-      >
-        Login
-      </button>
+    <div className="loginPage">
+      <div className="loginCard">
+        <h2 className="loginTitle">Spotify Clone</h2>
 
-      <button
-        onClick={() => navigate("/register")}
-        className="bg-blue-500 p-2 text-white rounded w-64"
-      >
-        Register
-      </button>
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="loginBtn" onClick={handleLogin}>
+          Login
+        </button>
+
+        <button
+          className="registerBtn"
+          onClick={() => navigate("/register")}
+        >
+          Register
+        </button>
+      </div>
     </div>
   );
 }
