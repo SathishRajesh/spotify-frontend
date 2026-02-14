@@ -1,16 +1,39 @@
-# React + Vite
+How It Works
+    User registers or logs in.
+    Backend validates.
+    User searches songs.
+    Backend fetches data from iTunes API.
+    Frontend displays songs in grid layout.
+    User clicks song → audio preview plays in bottom player.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech Stack
+    Frontend
+    React.js
+    React Router
+    Axios
+    Ant Design
+    CSS
 
-Currently, two official plugins are available:
+Backend 
+    Node.js
+    Express.js
+    MongoDB
+    Mongoose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+External API
+    iTunes Search API
 
-## React Compiler
+Features
+    User Registration & Login
+    JWT Authentication
+    Protected Routes
+    Search Songs
+    Category-based songs (Love, Sad, Trending, etc.)
+    Play / Pause music preview
+    Bottom music player
+    Spotify-style dark UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+.env
+  PORT=5000
+  MONGO_DB_URL=mongodb+srv
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
